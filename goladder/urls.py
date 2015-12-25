@@ -6,5 +6,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'goladder.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('ladder.urls', namespace='ladder')),
+    url(r'^admin/', include(admin.site.urls), name='admin'),
 )

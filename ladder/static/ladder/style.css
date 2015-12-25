@@ -1,0 +1,13 @@
+
+table#the_ladder {
+    margin: 0px auto;
+    width: 75%
+}
+
+table#the_ladder th {
+    text-align: center
+}
+
+table#the_ladder td {
+    text-align: center
+}

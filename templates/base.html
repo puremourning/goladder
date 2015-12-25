@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+{% load i18n %}
+
+<head>
+
+<title>{% block title %}Go Ladder{% endblock title %}</title>
+<meta charset="utf-8">
+<meta http-equiv="content-type"
+      content="application/xhtml+xml; charset=UTF-8" />
+
+{% block stylesheet %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+<!--[if lte IE 8]>
+  
+    <link rel="stylesheet" 
+          href="http://yui.yahooapis.com/pure//grids-responsive-old-ie.css">
+  
+<![endif]-->
+<!--[if gt IE 8]><!-->
+  
+    <link rel="stylesheet" 
+          href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+  
+<!--<![endif]-->
+
+<!--[if lte IE 8]>
+    <link rel="stylesheet" 
+          href="{% static 'goladder/layouts/blog-old-ie.css' %}">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="{% static 'goladder/layouts/blog.css' %}">
+<!--<![endif]-->
+  
+{% endblock stylesheet %}
+</head>
+
+<body>
+
+
+<!-- wrap -->
+<div id="layout" class='pure-g'>
+    <div class='sidebar pure-u-1 pure-u-md-1-4'>
+        <div class='header'>
+        {% block bar %}
+            <h1 class='brand-title'>Go Ladder</h1>
+            <h2 class='brand-tagline'>A simple stairway to weiqi excellence</h2>
+
+            <nav class="nav">
+                <ul class='nav-list'>
+                    <li class='nav-item'>
+                        <a class='pure-button' 
+                           href="{% url 'ladder:ladder' %}">Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='pure-button'
+                           href="{% url 'ladder:match-add' %}">Enter result</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='pure-button' 
+                           href="{% url 'admin:index' %}">Admin</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock bar %}
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <!-- content : page stuff goes here -->
+        {% block content %}
+        <p>You need to implement the content block</P>
+        {% endblock content %}
+    </div>
+</div>
+
+</body>
+</html>

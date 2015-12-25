@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Enter game result</h2>
+
+<p>Enter the game result below:</p>
+
+<p>
+
+<form method=post action="{% url 'ladder:match-add' %}"
+      class='pure-form-aligned pure-form'>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class='pure-control-group'>
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
+    <div class='pure-controls'>
+        <button type="submit" class='pure-button pure-button-primary'>
+            Submit
+        </button>
+    </div>
+</form>
+
+</p>
+
+{% endblock content %}
+
+<!--
+ vim:ft=django
+-->

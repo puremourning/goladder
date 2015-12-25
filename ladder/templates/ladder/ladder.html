@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+    {{ block.super }}
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'ladder/style.css' %}" />
+{% endblock stylesheet %}
+
+{% block content %}
+
+<h2>The ladder</h2>
+
+<p>This is the ladder, ordered by rating. Only players with 3 or more games,
+and thus an actual rating, are shown.</p>
+
+{% if ladder %}
+    <table id="the_ladder">
+    <tr>
+        <th>Player</th><th>Rating</th><th>Games played</th><th>Go rank</th>
+    </tr>
+    {% for player in ladder %}
+        <tr>
+            <td>
+              <a href="{% url 'ladder:player' pk=player.id %}">
+                {{ player.name }}
+              </a>
+            </td>
+            <td>{{ player.rating }}</td>
+            <td>{{ player.games_played }}</td>
+            <td>{{ player.rank }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No players in the ladder.</p>
+{% endif %}
+
+{% endblock content %}
+
+<!--
+ vim:ft=django
+-->
